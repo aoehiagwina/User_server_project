@@ -8,9 +8,11 @@ const {
     delete_user
 } = require("./user_controller");
 
-userRouter.post("/user", add_user);
-userRouter.get("/user", list_user);
+const {hash_Password, decrypt_Password} = require("../middleware");
+
+userRouter.post("/user", add_user, hash_Password);
+userRouter.get("/user/:username", list_user);
 userRouter.put("/user", update_user);
-userRouter.delete("/user", delete_user);
+userRouter.delete("/user/:username", delete_user);
 
 module.exports = userRouter;

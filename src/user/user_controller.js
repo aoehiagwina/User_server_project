@@ -13,7 +13,7 @@ exports.add_user = async (req, res) => {
 
 exports.list_user = async (req, res) => {
     try {
-        const user = await User.findOne({username: req.param.username});
+        const user = await User.findOne({username: req.params.username});
         res.status(200).send({message:"user found", user: user});
     } catch (error) {
         console.log(error);
